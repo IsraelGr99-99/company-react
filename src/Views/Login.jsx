@@ -7,7 +7,7 @@ import storage from '../Storage/storage';
 const Login = () => {
   //Declaramos las variables
   const [email, setEmail] = useState('');
-  const [password, setpassword] = useState('');
+  const [password, setPassword] = useState('');
   const go = useNavigate();
 
   //La documentacion indica que necesitamos mandar una peticion a esta ruta si nos conectaremos a ella, si no es de laravel se puede omitir este paso
@@ -28,7 +28,33 @@ const Login = () => {
   }
 
   return (
-    <div>Login</div>
+    <div className='container-fluid'>
+      <div className="row mt-5">
+        <div className="col-md-4 offset-md-4">
+          <div className="card border border-primary">
+            <div className="card-header bg-primary border border-primary">LOGIN</div>
+            <div className="card-body">
+              {/* Cuando se mande este formulario mandara la funcion login */}
+              <form onSubmit={login}>
+                <DivInput type='email' icon='fa-at' value={email} className='form-control' placeholder='Email' required='required' 
+                handleChange={ (e)=> setEmail(e.target.value)}/>
+                <DivInput type='password' icon='fa-key' value={password} className='form-control' placeholder='Password' required='required' 
+                handleChange={ (e)=> setPassword(e.target.value)}/>
+                <div className="d-grid col-10 mx-auto">
+                  <button className='btn btn-success'>
+                    <i className='fa-solid fa-door-open'></i> Login
+                  </button>
+                </div>
+              </form>
+              {/* Link que nos lleva a la seccion de registro */}
+              <Link to='/register'> 
+                <i className='fa-solid fa-user-plus mt-4'></i> Register
+              </Link>        
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 

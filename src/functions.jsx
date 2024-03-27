@@ -4,7 +4,7 @@ import storage from './Storage/storage';
 //Creamos funcion exportable para la alerta personalizada
 export const show_alerta = (msj, icon) => {
     Swal.fire({
-        title: mjs,
+        title: msj,
         icon: icon,
         buttonsStyling: true
     });
@@ -40,38 +40,35 @@ export const sendRequest = async (method, params, url, redir = '', token = true)
                         //Si la variable de redir es diferente de vacía y le ponemos 2s de espera
                         (redir !== '') ? window.location.href = redir : '', 2000)
             })
-            //Cachamos los errores que se hayan producido
-            .catch( (errors) =>{
-                let desc = '';
-                res = errors.response.data,
-                //Si en cada mapero hay error vamos irlos guardando en la misma varible
-                errors.response.data.errors.map( (e) => {
-                    desc += ' '+e
-                })
-                show_alerta(desc,'error')
-            })
-        //Retornamos la variable que contiene la respuesta
-        return res;
+        //Cachamos los errores que se hayan producido
+        .catch((errors) => {
+            let desc = '';
+            res = errors.response.data,
+            //Si en cada mapero hay error vamos irlos guardando en la misma varible
+            errors.response.data.errors.map((e) => {desc = desc + ' '+e})
+        show_alerta(desc, 'error')
+    })
+    //Retornamos la variable que contiene la respuesta
+    return res;
 }
 //Funcion de confirmacion
-export const confirmation = async (name,url,redir) => {
-    const alerta = Swal.mixin({buttonsStyling:true});
+export const confirmation = async (name, url, redir) => {
+    const alerta = Swal.mixin({ buttonsStyling: true });
     alerta.fire({
         title: 'Are you sure delete ' + name + ' ?',
         icon: 'question',
         //Indicamos que tendra un boton de cancelacion
         showCancelButton: true,
-        confirmButtonText: '<i class="fa-solid fa-check"></i> Yes, deleted.',
+        confirmButtonText: '<i class="fa-solid fa-check"></i> Yes, delete.',
         cancelButtonText: '<i class="fa-solid fa-ban"></i> Cancel.'
     })
-    //Si todo salio bien cachamos el resultado
-    .then( (result) =>{
-        //Si el usuario confirmo la eliminacion procedemos a realizar la ejecución
-        if(result.isConfirmed){
-            sendRequest('DELETE',{},url,redir)
-        }
-    })
-
+        //Si todo salio bien cachamos el resultado
+        .then((result) => {
+            //Si el usuario confirmo la eliminacion procedemos a realizar la ejecución
+            if (result.isConfirmed) {
+                sendRequest('DELETE', {}, url, redir)
+            }
+        });
 }
 
 //Indicamos que la funcion exportable es show_alerta

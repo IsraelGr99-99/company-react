@@ -16,25 +16,22 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Nav>
-        <Routes>
-          {/* Ingresamos las rutas */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-
-          {/* Protegemos las rutas cuando no esten logeados */}
-          {/* Le pasamos como elemento la ProtectedRoutes */}
-          <Route element={<ProtectedRoutes />}>
-            <Route path="/" element={<Departments />} />
-            <Route path="/create" element={<CreateDepartment />} />
-            {/* Esta ruta nos pide un parametro asi que le indicamos cual sera en este caso el ID */}
-            <Route path="/edit:id" element={<EditDepartment />} />
-            <Route path="/employees" element={<Employees />} />
-            <Route path="/graphic" element={<Graphic />} />
-          </Route>
-
-        </Routes>
-      </Nav>
+      <Nav />
+      <Routes>
+        {/* Ingresamos las rutas */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        {/* Protegemos las rutas cuando no esten logeados */}
+        {/* Le pasamos como elemento la ProtectedRoutes */}
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/" element={<Departments />} />
+          <Route path="/create" element={<CreateDepartment />} />
+          {/* Esta ruta nos pide un parametro asi que le indicamos cual sera en este caso el ID */}
+          <Route path="/edit:id" element={<EditDepartment />} />
+          <Route path="/employees" element={<Employees />} />
+          <Route path="/graphic" element={<Graphic />} />
+        </Route>
+      </Routes>
     </BrowserRouter>
   )
 }
