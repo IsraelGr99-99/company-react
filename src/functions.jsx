@@ -43,9 +43,13 @@ export const sendRequest = async (method, params, url, redir = '', token = true)
         //Cachamos los errores que se hayan producido
         .catch((errors) => {
             let desc = '';
-            res = errors.response.data,
+            res = errors.response.data
             //Si en cada mapero hay error vamos irlos guardando en la misma varible
-            errors.response.data.errors.map((e) => {desc = desc + ' '+e})
+            if (errors.response && errors.response.data && errors.response.data.errors) {
+                desc = errors.response.data.errors.map((e) => ' ' + e).join('');
+            } else {
+                desc = 'Unknown error occurred';
+            }
         show_alerta(desc, 'error')
     })
     //Retornamos la variable que contiene la respuesta
