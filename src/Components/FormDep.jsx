@@ -39,7 +39,7 @@ const FormDep = (params) => {
       <div className="row mt-5">
         <div className="col-md-4 offset-md-4">
           <div className="card border border-info">
-            <div className="card-header bg-danger border border-info">
+            <div className="card-header">
               {params.title}
             </div>
             <div className="card-body">
@@ -55,7 +55,7 @@ const FormDep = (params) => {
                   handleChange={(e) => setName(e.target.value)}
                 />
                 <div className="d-grid col-10 mx-auto">
-                  <button className='btn btn-success'>
+                  <button className='btn cont-add-btn'>
                     <i className='fa-solid fa-save'></i> Save
                   </button>
                 </div>

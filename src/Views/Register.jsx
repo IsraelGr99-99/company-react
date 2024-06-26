@@ -67,6 +67,15 @@ const Register = () => {
                 </button>
               </div>
             </form>
+            <div className="cont-btn-register mt-4">
+              <Link
+                to="/login"
+                className="text-decoration-none cont-btn-register"
+              >
+                <i class="fa-solid fa-arrow-right-to-bracket"></i> Iniciar
+                Sesión
+              </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -13,6 +13,32 @@
   background: #1875FF;
 }
 
-.btn-add button{
-  background-color: #1875FF;
+.cont-add-btn{
+  color: #ffffff !important;
+  background-color: #1e5ab5 !important;
+}
+
+.cont-add-btn{
+  box-shadow: 0px 14px 56px -11px #1875FF;
+  background: #1875FF;
+  border-radius: 15px;
+}
+
+.cont-add-btn:hover{
+  transform: translateY(1px);
+  transition: transform .2s ease-out;
+  box-shadow: 0px 14px 56px -11px #1875FF;
+  background: #1875FF;
+}
+
+.btn-blue:hover{
+  color: white !important;
+  background-color: #1875FF !important;
+}
+.btn-trash{
+  color: rgb(214, 64, 64) !important;
+}
+.btn-trash:hover{
+  background-color: #1875FF !important;
+  color: rgb(255, 255, 255) !important;
 }

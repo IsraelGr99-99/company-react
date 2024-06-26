@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { sendRequest } from '../../functions';
 import { Pie, Bar } from 'react-chartjs-2';
+import '../../stylesheets/graphic.css'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement } from 'chart.js';
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement);
 
@@ -32,13 +33,12 @@ const Graphic = () => {
   };
 
   return (
-    <div className='container-fluid'>
-      <div className="row mt-5">
-        <div className="col-md-6 offset-md-3">
+    <div className='container-fluid grahic' >
+      <h2>Employees by Department</h2>
+        <div className="col-md-10 offset-md-1">
           <Bar options={charOptions} data={charData} />
         </div>
       </div>
-    </div>
   )
 }
 

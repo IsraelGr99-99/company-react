@@ -111,7 +111,7 @@ const Employees = () => {
     <div className="container-fluid">
       <DivAdd>
         <button
-          className="btn btn-dark"
+          className="btn cont-add-btn"
           data-bs-toggle="modal"
           data-bs-target="#modalEmployees"
           onClick={() => openModal(1)}
@@ -142,7 +142,7 @@ const Employees = () => {
                 <td>{row.department}</td>
                 <td>
                   <button
-                    className="btn btn-dark"
+                    className="btn btn-blue"
                     data-bs-toggle="modal"
                     data-bs-target="#modalEmployees"
                     onClick={() =>
@@ -161,7 +161,7 @@ const Employees = () => {
                 </td>
                 <td>
                   <button
-                    className="btn btn-danger"
+                    className="btn btn-trash"
                     onClick={() => deleteEmployee(row.id, row.name)}
                   >
                     <i className="fa-solid fa-trash"></i>
@@ -220,14 +220,14 @@ const Employees = () => {
               handleChange={(e) => setDepartmentId(e.target.value)}
             />
             <div className="d-grid col-10 mx-auto">
-              <button className="btn btn-success">
+              <button className="btn cont-add-btn">
                 <i className="fa-solid fa-save"></i> Save
               </button>
             </div>
           </form>
         </div>
         <div className="modal-footer">
-          <button className="btn btn-dark" data-bs-dismiss="modal" ref={close}>Close</button>
+          <button className="btn btn-danger" data-bs-dismiss="modal" ref={close}>Close</button>
         </div>
       </Modal>
     </div>
