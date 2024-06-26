@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+.login{
+  width: 100%;
+  height: 90vh;
+  /* background-image: url('../assets/fondo.jpg'); */
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.cont-login{
+  height: 480px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(81, 81, 81, 0.229);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.data-login{
+  display: flex;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.data-login h1{
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+  letter-spacing: 5px;
+  margin: 30px ;
+}
+.data-login form{
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 10px;
+}
+
+.cont-btn-register{
+  text-align: start;
+  color: rgb(5, 5, 5);
+  letter-spacing: 2px;
+  padding: 5px;
+}
+.cont-btn-login button{
+  box-shadow: 0px 14px 56px -11px #1875FF;
+  background: #1875FF;
+}
+
+.cont-btn-login button:hover{
+  transform: translateY(1px);
+  transition: transform .2s ease-out;
+  box-shadow: 0px 14px 56px -11px #1875FF;
+  background: #1875FF;
+}
+

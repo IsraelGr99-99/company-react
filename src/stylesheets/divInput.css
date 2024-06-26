@@ -1,0 +1,9 @@
+.login-input{
+  height: 70px;
+}
+.input-group-text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+}

@@ -32,9 +32,9 @@ const Edit = () => {
 
 
   return (
-    <div className='container-fluid'>
+    <div className='container-fluid bg-info department'>
       <DivAdd>
-        <Link to='create' className='btn btn-dark'>
+        <Link to='create' className='btn btn-add'>
           <i className='fa-solid fa-circle-plus'></i> Add
         </Link>
       </DivAdd>

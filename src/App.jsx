@@ -16,7 +16,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Nav />
+    <Nav />
       <Routes>
         {/* Ingresamos las rutas */}
         <Route path="/login" element={<Login />} />

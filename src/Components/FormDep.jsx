@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react';
 import { sendRequest } from '../functions';
-import DivInput from './DivInput'
+import DivInput from './DivInput';
 
 const FormDep = (params) => {
   const [name, setName] = useState('');
@@ -9,35 +9,30 @@ const FormDep = (params) => {
   let url = '/api/departments';
   let redirect = '';
 
-  useEffect( ()=>{
+  useEffect(() => {
     NameInput.current.focus();
     getDepartments();
-  },[]);
+  }, [params.id]);
 
-  const getDepartments = async() =>{
-    if(params.id != null){
-      const res = await sendRequest('GET','',(url+'/'+params.id));
+  const getDepartments = async () => {
+    if (params.id !== null) {
+      const res = await sendRequest('GET', '', `${url}/${params.id}`);
       setName(res.data.name);
     }
-  }
+  };
 
-  //Metodo para guardar
-  const save = async(e) =>{
+  const save = async (e) => {
     e.preventDefault();
-    if(params.id !== null){
-      method='PUT';
-      url='/api/departments'+params.id;
+    if (params.id !== null) {
+      method = 'PUT';
+      url = `/api/departments/${params.id}`;
       redirect = '/';
     }
-    //Hacemos llamada hacia la API
-    const res = await sendRequest(method,{name:name},url,redirect);
-    if(method == 'POST' && res.status == true){
+    const res = await sendRequest(method, { name: name }, url, redirect);
+    if (method === 'POST' && res.status === true) {
       setName('');
     }
-  }
-
-  
-
+  };
 
   return (
     <div className='container-fluid'>
@@ -49,15 +44,15 @@ const FormDep = (params) => {
             </div>
             <div className="card-body">
               <form onSubmit={save}>
-                <DivInput 
-                type='text'
-                icon='fa-building'
-                value={name}
-                className='form-control'
-                placeholder='Name'
-                required='required'
-                ref={NameInput}              
-                handleChange={(e)=>setName(e.target.value)}
+                <DivInput
+                  type='text'
+                  icon='fa-building'
+                  value={name}
+                  className='form-control'
+                  placeholder='Name'
+                  required='required'
+                  ref={NameInput}
+                  handleChange={(e) => setName(e.target.value)}
                 />
                 <div className="d-grid col-10 mx-auto">
                   <button className='btn btn-success'>
@@ -69,9 +64,8 @@ const FormDep = (params) => {
           </div>
         </div>
       </div>
-      
     </div>
-  )
+  );
 }
 
-export default FormDep
+export default FormDep;

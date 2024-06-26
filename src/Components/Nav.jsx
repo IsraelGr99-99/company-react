@@ -1,4 +1,5 @@
 import React from "react";
+import "../stylesheets/nav.css";
 //useNavigate nos va a permitir cambiar de ruta en nuestra aplicacion
 import { Link, useNavigate } from "react-router-dom";
 import storage from "../Storage/storage";
@@ -17,9 +18,13 @@ const Nav = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-white bg-info">
+    <nav className="navbar navbar-expand-lg navbar-white">
+      {/* Condicion para mostrar el contenido si el usuario esta loggeado o no */}
       <div className="container-fluid">
-        <a className="navbar-brand">COMPANY</a>
+        <div>
+          <a className="navbar-brand text-white">COMPANY LOGO</a>
+          <i class="fa fa-image"></i>
+        </div>
         <button
           className="navbar-toggler"
           type="button"
@@ -30,7 +35,6 @@ const Nav = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
       </div>
-      {/* Condicion para mostrar el contenido si el usuario esta loggeado o no */}
       {storage.get("authUser") ? (
         <div className="collapse navbar-collapse" id="nav">
           <ul className="navbar-nav mx-auto mb-2">
@@ -49,19 +53,27 @@ const Nav = () => {
                 Graphic
               </Link>
             </li>
-            {/* Nombre del usuario */}
-            <li className="nav-item px-lg-5 h3">
-              {storage.get("authUser").name}
-            </li>
           </ul>
-          <ul className="navbar-nav mx-auto mb-2">
-            <li className="nav-item px-lg-5">
-              {/* Cuando le demos click al boton nos mandara al inicio de sesion */}
-              <button className="btn btn-danger" onClick={logout}>
-                Logout
-              </button>
-            </li>
-          </ul>
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary "
+              type="button"
+              id="dropdownMenuButton1"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li>{storage.get("authUser").name}</li>
+              <li><hr class="dropdown-divider bg-white"></hr></li>
+              <li>
+                <button className="btn btn-out" onClick={logout}>
+                  Logout
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
       ) : (
         ""

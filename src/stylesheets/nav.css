@@ -1,0 +1,46 @@
+nav{
+  background-color: #1875FF;
+  color: white;
+  box-shadow: 10px 0px 8px rgba(130, 126, 126, 0);
+
+}
+nav a.navbar-brand{
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.nav-link{
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+.toggle-exit{
+  width: 50px !;
+}
+.dropdown{
+  margin-right: 130px;
+}
+.dropdown-menu{
+  padding: 10px !important;
+  width: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(81, 81, 81, 0.229);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: rgb(20, 20, 20) !important; 
+
+}
+.btn-out{
+  width: 90%;
+  background-color: rgb(220, 16, 16) !important;
+  color: white !important;
+}
+.btn-out:hover{
+  background-color: rgb(183, 3, 3) !important;
+}
+@media screen and (max-width: 480px) {
+  nav{
+    padding: 10px !important;
+  }
+}

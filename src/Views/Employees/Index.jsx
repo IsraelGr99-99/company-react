@@ -6,6 +6,7 @@ import DivInput from "../../Components/DivInput";
 import Modal from "../../Components/Modal";
 import { confirmation, sendRequest } from "../../functions";
 import { PaginationControl } from "react-bootstrap-pagination-control";
+import axios from "axios";
 
 const Employees = () => {
   const [employees, setEmployees] = useState([]);
@@ -16,25 +17,24 @@ const Employees = () => {
   const [operation, setOperation] = useState("");
   const [title, setTitle] = useState("");
   const [departmentId, setDepartmentId] = useState("");
-  const [departments, setDepartments] = useState("");
+  const [departments, setDepartments] = useState([]);
   const [classLoad, setClassLoad] = useState("");
   const [classTable, setClassTable] = useState("d-none");
-  const [rows, setRows] = useState("");
-  const [page, setPage] = useState("");
-  const [pageSize, setPageSize] = useState("");
+  const [rows, setRows] = useState(0);
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
   const NameInput = useRef();
   const close = useRef();
   let method = "";
   let url = "";
 
-  //Cuando carge la pagina va a llamar a la funcion getEmpleado con parametro 1 y getDepartment
   useEffect(() => {
-    getEmployees(1);
+    getEmployees(page);
     getDepartments();
-  }, []);
+  }, [page]);
 
   const getEmployees = async (page) => {
-    const res = await sendRequest("GET", "", "api/employees?page=" + page, "");
+    const res = await sendRequest("GET", "", `api/employees?page=${page}`, "");
     setEmployees(res.data);
     setRows(res.total);
     setPageSize(res.per_page);
@@ -48,7 +48,7 @@ const Employees = () => {
   };
 
   const deleteEmployee = (id, name) => {
-    confirmation(name, ("api/employees/" + id), "employees");
+    confirmation(name, `api/employees/${id}`, "employees");
   };
 
   const clear = () => {
@@ -63,7 +63,7 @@ const Employees = () => {
     setTimeout(() => NameInput.current.focus(), 3000);
     setOperation(op);
     setId(em);
-    if (op == 1) {
+    if (op === 1) {
       setTitle("Create Employee");
     } else {
       setTitle("Update Employee");
@@ -76,12 +76,12 @@ const Employees = () => {
 
   const save = async (e) => {
     e.preventDefault();
-    if (operation == 1) {
+    if (operation === 1) {
       method = "POST";
       url = "api/employees";
     } else {
       method = "PUT";
-      url = "api/employees" + id;
+      url = `api/employees/${id}`;
     }
 
     const form = {
@@ -92,10 +92,10 @@ const Employees = () => {
     };
     const res = await sendRequest(method, form, url, "");
 
-    if (method == "PUT" && res.status == true) {
+    if (method === "PUT" && res.status === true) {
       close.current.click();
     }
-    if (res.status == true) {
+    if (res.status === true) {
       clear();
       getEmployees(page);
       setTimeout(() => NameInput.current.focus(), 1000);
@@ -140,7 +140,6 @@ const Employees = () => {
                 <td>{row.email}</td>
                 <td>{row.phone}</td>
                 <td>{row.department}</td>
-                {/* Cuando hacemos clic nos manda a la pagina de editar */}
                 <td>
                   <button
                     className="btn btn-dark"
@@ -190,7 +189,7 @@ const Employees = () => {
               value={name}
               className="form-control"
               placeholder="Name"
-              requered="required"
+              required="required"
               ref={NameInput}
               handleChange={(e) => setName(e.target.value)}
             />
@@ -200,7 +199,7 @@ const Employees = () => {
               value={email}
               className="form-control"
               placeholder="Email"
-              requered="required"
+              required="required"
               handleChange={(e) => setEmail(e.target.value)}
             />
             <DivInput
@@ -209,14 +208,14 @@ const Employees = () => {
               value={phone}
               className="form-control"
               placeholder="Phone"
-              requered="required"
+              required="required"
               handleChange={(e) => setPhone(e.target.value)}
             />
             <DivSelect
               icon="fa-building"
               value={departmentId}
               className="form-select"
-              requered="required"
+              required="required"
               options={departments}
               handleChange={(e) => setDepartmentId(e.target.value)}
             />
@@ -228,7 +227,7 @@ const Employees = () => {
           </form>
         </div>
         <div className="modal-footer">
-          <button className="btn btn-dark" data-bs-dismiss='modal' ref={close}> Close</button>
+          <button className="btn btn-dark" data-bs-dismiss="modal" ref={close}>Close</button>
         </div>
       </Modal>
     </div>

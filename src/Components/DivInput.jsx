@@ -1,4 +1,5 @@
 import React, {forwardRef,useEffect, useRef} from "react";
+import '../stylesheets/divInput.css'
 
 //Envio de referencias
 export default forwardRef(({ type='text', icon='user',placeholder='', name, id, value, className, required, isFocused, handleChange},ref) => {

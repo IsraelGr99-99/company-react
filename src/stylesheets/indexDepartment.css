@@ -1,0 +1,18 @@
+.department{
+  height: 100vh;
+}
+.cont-btn-register button{
+  box-shadow: 0px 14px 56px -11px #1875FF;
+  background: #1875FF;
+}
+
+.cont-btn-login button:hover{
+  transform: translateY(1px);
+  transition: transform .2s ease-out;
+  box-shadow: 0px 14px 56px -11px #1875FF;
+  background: #1875FF;
+}
+
+.btn-add button{
+  background-color: #1875FF;
+}
