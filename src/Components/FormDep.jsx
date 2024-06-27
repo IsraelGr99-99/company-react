@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { sendRequest } from '../functions';
 import DivInput from './DivInput';
 
-const FormDep = (params) => {
+const FormDep = ({ id, title }) => {
   const [name, setName] = useState('');
   const NameInput = useRef();
   let method = 'POST';
@@ -11,21 +11,21 @@ const FormDep = (params) => {
 
   useEffect(() => {
     NameInput.current.focus();
-    getDepartments();
-  }, [params.id]);
+    getDepartment();
+  }, [id]);
 
-  const getDepartments = async () => {
-    if (params.id !== null) {
-      const res = await sendRequest('GET', '', `${url}/${params.id}`);
+  const getDepartment = async () => {
+    if (id) {
+      const res = await sendRequest('GET', '', `${url}/${id}`);
       setName(res.data.name);
     }
   };
 
   const save = async (e) => {
     e.preventDefault();
-    if (params.id !== null) {
+    if (id) {
       method = 'PUT';
-      url = `/api/departments/${params.id}`;
+      url = `/api/departments/${id}`;
       redirect = '/';
     }
     const res = await sendRequest(method, { name: name }, url, redirect);
@@ -40,7 +40,7 @@ const FormDep = (params) => {
         <div className="col-md-4 offset-md-4">
           <div className="card border border-info">
             <div className="card-header">
-              {params.title}
+              {title}
             </div>
             <div className="card-body">
               <form onSubmit={save}>
