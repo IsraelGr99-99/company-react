@@ -61,7 +61,7 @@ const Login = () => {
               </div>
             </form>
             {/* Link que nos lleva a la seccion de registro */}
-            <div className="cont-btn-register">
+            <div className="cont-btn-register mt-2">
               <Link to="/register" className="text-decoration-none cont-btn-register">
                 <i className="fa-solid fa-user-plus mt-4"></i> Register
               </Link>

@@ -120,7 +120,7 @@ const Employees = () => {
         </button>
       </DivAdd>
       <DivTable col="10" off="1" classLoad={classLoad} classTable={classTable}>
-        <table className="table table-bordered">
+        <table className="table table-hover">
           <thead>
             <tr>
               <th>#</th>

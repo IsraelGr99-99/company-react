@@ -26,13 +26,13 @@ const Nav = () => {
           <i class="fa fa-image"></i>
         </div>
         <button
-          className="navbar-toggler"
+          className="navbar-toggler border-white"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#nav"
           aria-controls="navbarSupportedContent"
         >
-          <span className="navbar-toggler-icon"></span>
+          <i class="fa-solid fa-caret-down text-white"></i>
         </button>
       </div>
       {storage.get("authUser") ? (

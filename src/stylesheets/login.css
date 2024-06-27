@@ -53,6 +53,9 @@
   letter-spacing: 2px;
   padding: 5px;
 }
+.cont-btn-register:hover{
+  color: #1875FF;
+}
 .cont-btn-login button{
   box-shadow: 0px 14px 56px -11px #1875FF;
   background: #1875FF;
