@@ -13,6 +13,7 @@ window.axios =axios
 
 //Definimos la ruta base
 //Definimos la ruta de la API
+//window.axios.defaults.baseURL = 'http://192.168.100.52:8000'
 window.axios.defaults.baseURL = 'https://company.yajala.com/'
 //Encabezados
 window.axios.defaults.headers.common['Accept'] = 'application/json'

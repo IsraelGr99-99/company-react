@@ -5,32 +5,36 @@ import DivInput from './DivInput';
 const FormDep = ({ id, title }) => {
   const [name, setName] = useState('');
   const NameInput = useRef();
-  let method = 'POST';
-  let url = '/api/departments';
-  let redirect = '';
 
   useEffect(() => {
+    if (id) {
+      getDepartment();
+    }
     NameInput.current.focus();
-    getDepartment();
   }, [id]);
 
   const getDepartment = async () => {
-    if (id) {
-      const res = await sendRequest('GET', '', `${url}/${id}`);
+    try {
+      const res = await sendRequest('GET', '', `/api/departments/${id}`);
       setName(res.data.name);
+    } catch (error) {
+      console.error('Error fetching department:', error);
     }
   };
 
   const save = async (e) => {
     e.preventDefault();
-    if (id) {
-      method = 'PUT';
-      url = `/api/departments/${id}`;
-      redirect = '/';
-    }
-    const res = await sendRequest(method, { name: name }, url, redirect);
-    if (method === 'POST' && res.status === true) {
-      setName('');
+    let method = id ? 'PUT' : 'POST';
+    let url = id ? `/api/departments/${id}` : '/api/departments';
+    let redirect = id ? '/' : '';
+
+    try {
+      const res = await sendRequest(method, { name: name }, url, redirect);
+      if (res.status === true) {
+        setName('');
+      }
+    } catch (error) {
+      console.error('Error saving department:', error);
     }
   };
 
@@ -55,7 +59,7 @@ const FormDep = ({ id, title }) => {
                   handleChange={(e) => setName(e.target.value)}
                 />
                 <div className="d-grid col-10 mx-auto">
-                  <button className='btn cont-add-btn'>
+                  <button className='btn cont-add-btn' type="submit">
                     <i className='fa-solid fa-save'></i> Save
                   </button>
                 </div>
